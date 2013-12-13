@@ -18,7 +18,7 @@
         <section>
             <div id="formulario">
                 <h2>Login</h2>          
-                <form name="formcontacto" action="" method="post">
+                <form name="formcontacto" action="loginServlet" method="post">
                   <div class="form_settings">
                     <p><span>Email</span><input class="contact" type="email" name="email" value="" required/></p>
                     <p><span>Contraseña</span><input class="contact" type="password" name="clave" value="" required/></p>

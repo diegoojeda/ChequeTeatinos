@@ -48,5 +48,5 @@ public class ClienteFacade extends AbstractFacade<Cliente> {
             throw new Exception("Hubo un error durante el login\n");
         }
     }
-    
+   
 }
