@@ -36,7 +36,7 @@ public class ClienteFacade extends AbstractFacade<Cliente> {
                 .setParameter("email", email)
                 .setParameter("password", password)
                 .getResultList();
-        if (clientes.size() == 1){
+        if (clientes.isEmpty()){
             //Cliente no encontrado.
             return null;
         }
