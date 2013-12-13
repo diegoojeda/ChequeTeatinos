@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import src.Beans.loginBean;
-import src.Entities.Cliente;
 import src.Facades.ClienteFacade;
 
 
@@ -29,17 +28,7 @@ public class loginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String pass = request.getParameter("password");
-        loginBean lb = new loginBean();
-        try {
-            lb.setCli(clienteFacade.findClienteEmailPass(email, pass));
-        } catch (Exception e) {
-            request.getRequestDispatcher("error.jsp").forward(request, response); //Crear pagina error de login
-        }
-        HttpSession sesion = request.getSession();
-        sesion.setAttribute("login", lb);
-        request.getRequestDispatcher("loginExito.jsp").forward(request, response);
+        super.doGet(request, response);
     }
 
     /**
@@ -55,15 +44,15 @@ public class loginServlet extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String pass = request.getParameter("password");
-        Cliente c = null;
-        try {
-            c = clienteFacade.findClienteEmailPass(email, pass);
-        } catch (Exception ex) {
-            request.getRequestDispatcher("error.jsp"); //Crear pagina error de login
-        }
         loginBean lb = new loginBean();
-        request.setAttribute("cliente", c);
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        try {
+            lb.setCli(clienteFacade.findClienteEmailPass(email, pass));
+        } catch (Exception e) {
+            request.getRequestDispatcher("error.jsp").forward(request, response); //Crear pagina error de login
+        }
+        HttpSession sesion = request.getSession();
+        sesion.setAttribute("login", lb);
+        request.getRequestDispatcher("loginExito.jsp").forward(request, response);
     }
 
     /**
