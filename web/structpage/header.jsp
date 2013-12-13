@@ -4,6 +4,7 @@
     Author     : escabia
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <header>
     <div id="logo">
@@ -25,7 +26,13 @@
             <li id="lirestaurantes"><a href="restaurants.jsp" id="restaurantes">Restaurantes</a></li>
         </ul>
         <div class="loginaccount">
-            <a href="login.jsp"><p>Login</p></a>
+            <c:if test="${empty login.cli.email}">
+                <a href="login.jsp"><p>Login</p></a>
+            </c:if>
+            <c:if test="${not empty login.cli.email}">
+                ${login.cli.nombre}
+            
+            </c:if>
         </div>
     </nav>
 </header>

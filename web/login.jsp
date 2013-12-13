@@ -19,12 +19,12 @@
         <section>
             <div id="formulario">
                 <h2>Login</h2>      
-                <form name="formcontacto" action="home.jsp" method="post">
+                <form name="formcontacto" action="loginServlet" method="post">
                   <div class="form_settings">
                     <p><span>Email</span><input class="contact" type="email" name="email" required/></p>
-                    <p><span>Contraseña</span><input class="contact" type="password" name="clave" required/></p>
+                    <p><span>Contraseña</span><input class="contact" type="password" name="password" required/></p>
                     <div class="mismalinea">
-                        <a href="signup.jsp"><input class="submit" type="button" value="Registrarse" /></a>
+                        <a href="signup.jsp"><input class="submit" type="button" value="Nuevo" /></a>
                         <input class="submit" type="submit" value="Entrar" />
                     </div>
                   </div>
