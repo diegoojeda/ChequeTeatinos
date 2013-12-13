@@ -9,14 +9,14 @@
 <%@attribute name="footer" fragment="true" %>
 <html>
   <body>
-    <div id="pageheader">
-      <jsp:invoke fragment="header"/>
-    </div>
+      <header>
+            <jsp:invoke fragment="header"/>
+      </header>
     <div id="body">
       <jsp:doBody/>
     </div>
-    <div id="pagefooter">
-      <jsp:invoke fragment="footer"/>
-    </div>
+    <footer>
+        <jsp:invoke fragment="footer"/>
+    </footer>
   </body>
 </html>
