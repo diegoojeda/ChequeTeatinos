@@ -4,15 +4,30 @@
  * and open the template in the editor.
  */
 
-package ChequeTeatinos.src.Servlets;
+package src.Servlets;
 
+import src.Beans.homeBean;
+import src.Entities.Oferta;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import src.Fachadas.OfertaFacade;
 
 /**
  *
@@ -20,7 +35,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "homeServlet", urlPatterns = {"/homeServlet"})
 public class homeServlet extends HttpServlet {
-
+    @PersistenceContext(unitName = "ChequeTeatinosPU")
+    private EntityManager em;
+    @Resource
+    private javax.transaction.UserTransaction utx;
+    @EJB
+    private OfertaFacade ofertaFacade;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -59,8 +79,15 @@ public class homeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        
+//        processRequest(request, response);
+        homeBean h = new homeBean();
+        ArrayList<Oferta> ofrs = (ArrayList<Oferta>) ofertaFacade.findAll();
+//        ofrs.addAll(ofertaFacade.findAll());
+        System.out.println("Ofertas\n");
+        for (Oferta o : ofrs){
+            System.out.println(o.getDescripcion());
+        }
+        h.setOfertas(null);
     }
 
     /**
@@ -86,5 +113,16 @@ public class homeServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    public void persist(Object object) {
+        try {
+            utx.begin();
+            em.persist(object);
+            utx.commit();
+        } catch (NotSupportedException | SystemException | RollbackException | HeuristicMixedException | HeuristicRollbackException | SecurityException | IllegalStateException e) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
+            throw new RuntimeException(e);
+        }
+    }
 
 }

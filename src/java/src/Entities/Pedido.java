@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package ChequeTeatinos.src.Entities;
+package src.Entities;
 
 import java.io.Serializable;
 import java.util.Collection;

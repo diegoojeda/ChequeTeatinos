@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package ChequeTeatinos.src.EntitiesFacades;
+package src.Fachadas;
 
-import ChequeTeatinos.src.Entities.Pedido;
+import src.Entities.Pedido;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

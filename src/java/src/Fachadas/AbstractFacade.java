@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package ChequeTeatinos.src.EntitiesFacades;
+package src.Fachadas;
 
 import java.util.List;
 import javax.persistence.EntityManager;

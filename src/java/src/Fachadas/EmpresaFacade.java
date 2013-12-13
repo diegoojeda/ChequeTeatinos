@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package ChequeTeatinos.src.EntitiesFacades;
+package src.Fachadas;
 
-import ChequeTeatinos.src.Entities.Oferta;
+import src.Entities.Empresa;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  * @author diegoojedagarcia
  */
 @Stateless
-public class OfertaFacade extends AbstractFacade<Oferta> {
+public class EmpresaFacade extends AbstractFacade<Empresa> {
     @PersistenceContext(unitName = "ChequeTeatinosPU")
     private EntityManager em;
 
@@ -25,8 +25,8 @@ public class OfertaFacade extends AbstractFacade<Oferta> {
         return em;
     }
 
-    public OfertaFacade() {
-        super(Oferta.class);
+    public EmpresaFacade() {
+        super(Empresa.class);
     }
     
 }
