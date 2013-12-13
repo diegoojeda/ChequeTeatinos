@@ -6,6 +6,7 @@
 
 package src.Facades;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,4 +30,8 @@ public class OfertaFacade extends AbstractFacade<Oferta> {
         super(Oferta.class);
     }
     
+    public int getNextSeqVal (){
+        List<Integer> seq = em.createQuery("select seq_oferta.nextval from dual;").getResultList();
+        return seq.get(0);
+    }
 }

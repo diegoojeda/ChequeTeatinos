@@ -1,23 +1,22 @@
 package src.Servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import src.Beans.loginBean;
-import src.Entities.Cliente;
-import src.Facades.ClienteFacade;
+import src.Entities.Oferta;
+import src.Facades.OfertaFacade;
 
 
-@WebServlet(name = "loginServlet", urlPatterns = {"/loginServlet"})
-public class loginServlet extends HttpServlet {
-
+@WebServlet(name = "carritoServlet", urlPatterns = {"/carritoServlet"})
+public class carritoServlet extends HttpServlet {
     @EJB
-    private ClienteFacade clienteFacade;
+    private OfertaFacade ofertaFacade;
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -29,17 +28,22 @@ public class loginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String pass = request.getParameter("password");
-        loginBean lb = new loginBean();
-        try {
-            lb.setCli(clienteFacade.findClienteEmailPass(email, pass));
-        } catch (Exception e) {
-            request.getRequestDispatcher("error.jsp").forward(request, response); //Crear pagina error de login
+        Oferta o = ofertaFacade.find(request.getParameter("idOferta"));
+        if (request.getSession().getAttribute("login") != null){
+            //Usuario logueado, procedemos a añadir a su carrito el objeto
+            if (request.getSession().getAttribute("carrito") == null){
+                //En caso de que no exista el carrito aun
+                ArrayList<Oferta> carrito = new ArrayList<>();
+                request.getSession().setAttribute("carrito", carrito);
+            }
+            ((ArrayList<Oferta>)request.getSession().getAttribute("carrito")).add(o);
+            request.getRequestDispatcher("home.jsp").forward(request, response);
         }
-        HttpSession sesion = request.getSession();
-        sesion.setAttribute("login", lb);
-        request.getRequestDispatcher("loginExito.jsp").forward(request, response);
+        else{
+            //Usuario no logueado, le redirigimos a la pagina de login
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
+        
     }
 
     /**
@@ -53,17 +57,6 @@ public class loginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String pass = request.getParameter("password");
-        Cliente c = null;
-        try {
-            c = clienteFacade.findClienteEmailPass(email, pass);
-        } catch (Exception ex) {
-            request.getRequestDispatcher("error.jsp"); //Crear pagina error de login
-        }
-        loginBean lb = new loginBean();
-        request.setAttribute("cliente", c);
-        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
     /**

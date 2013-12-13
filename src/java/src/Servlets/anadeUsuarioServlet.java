@@ -1,3 +1,9 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package src.Servlets;
 
 import java.io.IOException;
@@ -7,17 +13,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import src.Beans.loginBean;
 import src.Entities.Cliente;
 import src.Facades.ClienteFacade;
 
-
-@WebServlet(name = "loginServlet", urlPatterns = {"/loginServlet"})
-public class loginServlet extends HttpServlet {
-
+/**
+ *
+ * @author diegoojedagarcia
+ */
+@WebServlet(name = "anadeUsuarioServlet", urlPatterns = {"/anadeUsuarioServlet"})
+public class anadeUsuarioServlet extends HttpServlet {
     @EJB
     private ClienteFacade clienteFacade;
+
+
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -29,17 +38,7 @@ public class loginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String pass = request.getParameter("password");
-        loginBean lb = new loginBean();
-        try {
-            lb.setCli(clienteFacade.findClienteEmailPass(email, pass));
-        } catch (Exception e) {
-            request.getRequestDispatcher("error.jsp").forward(request, response); //Crear pagina error de login
-        }
-        HttpSession sesion = request.getSession();
-        sesion.setAttribute("login", lb);
-        request.getRequestDispatcher("loginExito.jsp").forward(request, response);
+        super.doGet(request, response);
     }
 
     /**
@@ -54,16 +53,20 @@ public class loginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String email = request.getParameter("email");
-        String pass = request.getParameter("password");
-        Cliente c = null;
-        try {
-            c = clienteFacade.findClienteEmailPass(email, pass);
-        } catch (Exception ex) {
-            request.getRequestDispatcher("error.jsp"); //Crear pagina error de login
+        if (clienteFacade.find(email) != null){
+            request.getRequestDispatcher("errorSignup.jsp").forward(request, response);
         }
-        loginBean lb = new loginBean();
-        request.setAttribute("cliente", c);
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        else{
+            Cliente nuevoCliente = new Cliente();
+            nuevoCliente.setEmail(email);
+            nuevoCliente.setPass(request.getParameter("password"));
+            nuevoCliente.setApellidos(request.getParameter("apellidos"));
+            nuevoCliente.setEsAdmin((short)0);
+            nuevoCliente.setNombre(request.getParameter("nombre"));
+            nuevoCliente.setTelefono(Integer.parseInt(request.getParameter("telefono")));
+            clienteFacade.create(nuevoCliente);
+            request.getRequestDispatcher("home.jsp").forward(request, response);
+        }
     }
 
     /**
@@ -75,5 +78,4 @@ public class loginServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }
-
 }

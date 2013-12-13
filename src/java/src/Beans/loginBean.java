@@ -3,14 +3,14 @@ package src.Beans;
 import src.Entities.Cliente;
 
 public class loginBean {
-    private Cliente c;
+    private Cliente cli;
 
-    public Cliente getC() {
-        return c;
+    public Cliente getCli() {
+        return cli;
     }
 
-    public void setC(Cliente c) {
-        this.c = c;
+    public void setCli(Cliente c) {
+        this.cli = c;
     }
     
 }
