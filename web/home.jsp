@@ -9,10 +9,12 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-        <jsp:include page="structpage/header.jsp" />
+        <jsp:include page="structpage/header.jsp" />      
     </jsp:attribute>
 
     <jsp:body>
-        <p>Hi I'm the heart of the message</p>
+        <aside></aside>  
+        <section>
+        </section>            
     </jsp:body>
 </t:genericpage>

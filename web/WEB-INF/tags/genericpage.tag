@@ -38,17 +38,17 @@
         <header>
               <jsp:invoke fragment="header"/>
         </header>
-      <div id="body">
-        <jsp:doBody/>
-      </div>
-      <footer>
-          <a href="http://validator.w3.org/check?uri=referer"><img src="resources/media/images/HTML5_w3c.png" alt="Validar HTML5" class="icons"/></a>  
-          <img src="resources/media/images/separador.png" alt="Separador de imágenes" class="icons" />
-          <a href="http://fundacion.vodafone.es/fundacion/es"><img src="resources/media/images/icon_fundacion_vodafone.jpg" alt="Ir a Fundación Vodafone" class="icons"/></a>
-          <img src="resources/media/images/separador.png" alt="Separador de imágenes" class="icons" />
-          <a href="http://www.uma.es"><img src="resources/media/images/ico_uma.png" alt="Ir a Universidad de Málaga" class="icons"/></a>
-          <img src="resources/media/images/separador.png" alt="Separador de imágenes" class="icons" />
-          <a href="http://masterinftel.uma.es/"><img src="resources/media/images/master.png" alt="Ir a MasterInftel" class="icons"/></a>
-      </footer>
+        <div id="site_content">
+            <jsp:doBody/>
+        </div>
+        <footer>
+            <a href="http://validator.w3.org/check?uri=referer"><img src="resources/media/images/HTML5_w3c.png" alt="Validar HTML5" class="icons"/></a>  
+            <img src="resources/media/images/separador.png" alt="Separador de imágenes" class="icons" />
+            <a href="http://fundacion.vodafone.es/fundacion/es"><img src="resources/media/images/icon_fundacion_vodafone.jpg" alt="Ir a Fundación Vodafone" class="icons"/></a>
+            <img src="resources/media/images/separador.png" alt="Separador de imágenes" class="icons" />
+            <a href="http://www.uma.es"><img src="resources/media/images/ico_uma.png" alt="Ir a Universidad de Málaga" class="icons"/></a>
+            <img src="resources/media/images/separador.png" alt="Separador de imágenes" class="icons" />
+            <a href="http://masterinftel.uma.es/"><img src="resources/media/images/master.png" alt="Ir a MasterInftel" class="icons"/></a>
+        </footer>
     </body>
 </html>
