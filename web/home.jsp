@@ -15,6 +15,10 @@
     <jsp:body>
         <aside></aside>  
         <section>
-        </section>            
+<!--            <c forEach var="oferta" items="${ofertas}">s
+                ${oferta.nombreOferta} <br>
+            </c: forEach>-->
+            ${ofertas.nombreOferta}
+        </section>
     </jsp:body>
 </t:genericpage>

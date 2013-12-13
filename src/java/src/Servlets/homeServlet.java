@@ -34,7 +34,8 @@ public class homeServlet extends HttpServlet {
             throws ServletException, IOException {
         homeBean h = new homeBean();
         h.setOfertas(ofertaFacade.findAll());
-        request.setAttribute("ofertas", h);
+        request.setAttribute("ofertas", h.getOfertas().get(0));
+//        System.out.println("Oferta: " + h.getOfertas().get(0).getDescripcion());
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 

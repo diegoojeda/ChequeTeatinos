@@ -42,8 +42,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Oferta.findByNombreOferta", query = "SELECT o FROM Oferta o WHERE o.nombreOferta = :nombreOferta"),
     @NamedQuery(name = "Oferta.findByDescripcion", query = "SELECT o FROM Oferta o WHERE o.descripcion = :descripcion"),
     @NamedQuery(name = "Oferta.findByPrecioOriginal", query = "SELECT o FROM Oferta o WHERE o.precioOriginal = :precioOriginal"),
-    @NamedQuery(name = "Oferta.findByPrecioConOferta", query = "SELECT o FROM Oferta o WHERE o.precioConOferta = :precioConOferta"),
-    @NamedQuery(name = "Oferta.findByUriImagen", query = "SELECT o FROM Oferta o WHERE o.uriImagen = :uriImagen")})
+    @NamedQuery(name = "Oferta.findByPrecioConOferta", query = "SELECT o FROM Oferta o WHERE o.precioConOferta = :precioConOferta")})
 public class Oferta implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -67,9 +66,6 @@ public class Oferta implements Serializable {
     private BigDecimal precioOriginal;
     @Column(name = "PRECIO_CON_OFERTA")
     private BigDecimal precioConOferta;
-    @Size(max = 255)
-    @Column(name = "URI_IMAGEN")
-    private String uriImagen;
     @OneToMany(mappedBy = "codigoOferta")
     private Collection<PedidoOferta> pedidoOfertaCollection;
     @JoinColumn(name = "EMPRESA", referencedColumnName = "ID")
@@ -137,14 +133,6 @@ public class Oferta implements Serializable {
 
     public void setPrecioConOferta(BigDecimal precioConOferta) {
         this.precioConOferta = precioConOferta;
-    }
-
-    public String getUriImagen() {
-        return uriImagen;
-    }
-
-    public void setUriImagen(String uriImagen) {
-        this.uriImagen = uriImagen;
     }
 
     @XmlTransient
