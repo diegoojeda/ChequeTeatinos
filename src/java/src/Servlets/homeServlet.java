@@ -7,67 +7,20 @@
 package src.Servlets;
 
 import src.Beans.homeBean;
-import src.Entities.Oferta;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.Resource;
 import javax.ejb.EJB;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
 import src.Fachadas.OfertaFacade;
 
-/**
- *
- * @author diegoojedagarcia
- */
 @WebServlet(name = "homeServlet", urlPatterns = {"/homeServlet"})
 public class homeServlet extends HttpServlet {
-    @PersistenceContext(unitName = "ChequeTeatinosPU")
-    private EntityManager em;
-    @Resource
-    private javax.transaction.UserTransaction utx;
     @EJB
     private OfertaFacade ofertaFacade;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet homeServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet homeServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -79,15 +32,10 @@ public class homeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
         homeBean h = new homeBean();
-        ArrayList<Oferta> ofrs = (ArrayList<Oferta>) ofertaFacade.findAll();
-//        ofrs.addAll(ofertaFacade.findAll());
-        System.out.println("Ofertas\n");
-        for (Oferta o : ofrs){
-            System.out.println(o.getDescripcion());
-        }
-        h.setOfertas(null);
+        h.setOfertas(ofertaFacade.findAll());
+        request.setAttribute("ofertas", h);
+        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
     /**
@@ -101,7 +49,6 @@ public class homeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**
@@ -112,17 +59,6 @@ public class homeServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
-    public void persist(Object object) {
-        try {
-            utx.begin();
-            em.persist(object);
-            utx.commit();
-        } catch (NotSupportedException | SystemException | RollbackException | HeuristicMixedException | HeuristicRollbackException | SecurityException | IllegalStateException e) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
-            throw new RuntimeException(e);
-        }
     }
 
 }

@@ -7,20 +7,20 @@
 package src.Beans;
 
 import src.Entities.Oferta;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author diegoojedagarcia
  */
 public class homeBean {
-    private ArrayList<Oferta> ofertas;
+    private List<Oferta> ofertas;
 
-    public ArrayList<Oferta> getOfertas() {
+    public List<Oferta> getOfertas() {
         return ofertas;
     }
 
-    public void setOfertas(ArrayList<Oferta> ofertas) {
+    public void setOfertas(List<Oferta> ofertas) {
         this.ofertas = ofertas;
     }
     
