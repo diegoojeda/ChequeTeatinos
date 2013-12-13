@@ -1,0 +1,141 @@
+/* 
+    Document   : classutils
+    Created on : 24-oct-2013, 12:48:14
+    Author     : escabia
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.icons{
+    height: 54px;
+}
+
+.logo{
+    width: 40px;
+    height: 70px;
+}
+
+.playpause{
+    height: 80px;
+    width: 80px;
+    float:right;
+}
+
+.nextprev{
+    height: 55px;
+    width: 72px;
+    float:right;
+    padding-top: 12px;
+}
+
+.mismalinea{
+    display:inline;
+}
+
+.derecha{
+    text-align: right;
+    float: right;
+}
+
+.colimages{
+    height: 170px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.coldescription{
+    width: 50%
+}
+
+.coliconos{
+    height: 35%;
+}
+
+.rowiconos{
+    width: 12%;
+    padding-left: 1%
+}
+
+
+#tablacategoria{
+    border-collapse: collapse
+}
+
+#trcategoria{
+  border: solid;
+  border-width: 1px 0;
+}
+
+#encabezado{
+    text-align: center     
+}
+
+#izquierda {    
+    /* width: 295px; */
+    width: 20%;
+    float: left;
+    display: inline-block;
+}
+
+#derecha {    
+    width: 300px;        
+    float: right;
+}
+
+#formulario {
+    clear: left; 
+}
+
+#arriba {
+    margin-top: 50px;
+    width: 100%;
+    height: 100%; 
+}
+
+.fotoperfil {
+    border: 3px solid #0D66A5;
+    width: 140px;
+    height: 140px;
+}
+
+.piefoto {
+    text-align: center;
+    font-size: 16px;
+    display: table-caption;
+    margin: 0 auto;
+    width: 140px;
+}
+
+.redessociales{
+    padding-top: 25px;
+    float: right;
+}
+
+.bordenegro{
+    text-shadow: 2px 2px 3px #000000;
+}
+
+.centrado{
+    padding-bottom: 10px;
+    border-left: 30px;
+}
+
+#home{
+    height: 22px;
+}
+
+#video {
+    text-align: center;
+    padding: 5% 5% 5% 5%;
+}
+
+#center{
+    padding-top: 15px;
+    margin-left:auto;
+    margin-right:auto;
+    width:70%;
+}
