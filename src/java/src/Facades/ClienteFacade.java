@@ -37,10 +37,12 @@ public class ClienteFacade extends AbstractFacade<Cliente> {
                 .setParameter("password", password)
                 .getResultList();
         if (clientes.isEmpty()){
+            System.out.println("Cliente no existe");
             //Cliente no encontrado.
             return null;
         }
         else if (clientes.size() == 1){
+            System.out.println("Cliente SI existe "+clientes.get(0).getNombre());
             return clientes.get(0);
         }
         else{
