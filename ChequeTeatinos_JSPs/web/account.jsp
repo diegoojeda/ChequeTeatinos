@@ -16,9 +16,8 @@
     <jsp:body>
         <jsp:include page="structpage/aside.jsp" />
         <section>
-            <c:forEach var="oferta" items="${ofertas.ofertas}">
-                ${oferta.nombreOferta}
-            </c:forEach>
+            Cuenta (para modificar sus datos)
+
         </section>
     </jsp:body>
 </t:genericpage>

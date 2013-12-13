@@ -119,11 +119,8 @@ function cargarUltimosSitios(){
 function quitarSelected(add){
     $("#liinicio").removeClass("selected"); 
     $("#lialojamiento").removeClass("selected");    
-    $("#licultura").removeClass("selected");    
     $("#liocio").removeClass("selected");  
     $("#lirestaurantes").removeClass("selected");  
-    $("#linosotros").removeClass("selected");
-    $("#lisitios").removeClass("selected");  
 
     $(add).addClass("selected");  
 }
@@ -135,11 +132,11 @@ function autoResizeDiv()
 
 $(document).ready(function() {
      window.onresize = autoResizeDiv;
- autoResizeDiv();
+    autoResizeDiv();
 
     
     /** Carga imagenes **/
-    $.backstretch([
+    /*$.backstretch([
          "http://yaentucasa.com/img/cms/malaga1.jpg"
       , "resources/media/images/a_malagueta-panorama.jpg"
       , "http://www.fuengirola.es/portal_localweb/img/portal/slideshow/1.jpg"
@@ -148,49 +145,28 @@ $(document).ready(function() {
       , "http://blog.avexperience.es/wp-content/uploads/2012/09/malaga.jpg"
       , "http://manuelortegaaparicio.files.wordpress.com/2011/07/mlaga_1.jpg"
       , "http://canales.opinionmalaga.com/turismo/wp-content/uploads/2011/02/turiiicarlos_20110127_1331361.jpg"
-    ], {duration: 3500, fade: 1000}); 
+    ], {duration: 3500, fade: 1000}); */
         
     $("section").load('sections/inicio.html', function(){
         cargarUltimosSitios();
     });   
-    selectandtitle("#liinicio", "Malagatur4all - Inicio");     
+    selectandtitle("#liinicio", "ChequeTeatinos - Inicio");     
 
     
-    $("#inicio").click(function(event) {
-        $("section").load('sections/inicio.html', function(){
-            cargarUltimosSitios();
-        });
-        selectandtitle("#liinicio", "Malagatur4all - Inicio");                 
-    });
+
     
     $("#alojamiento").click(function(event) {
-        cargarSeccion("contents/alojamiento.json","#lialojamiento");
-        selectandtitle("#lialojamiento", "Malagatur4all - Alojamiento");                 
-    });
-    
-    $("#cultura").click(function(event) {
-        cargarSeccion("contents/cultura.json","#licultura");
-        selectandtitle("#licultura", "Malagatur4all - Cultura");                 
+        selectandtitle("hotels.jsp", "ChequeTeatinos - Alojamiento");                 
     });
 
     $("#ocio").click(function(event) {
-        cargarSeccion("contents/ocio.json","#liocio");
-        selectandtitle("#liocio", "Malagatur4all - Ocio");                 
+        selectandtitle("entertainment.jsp", "ChequeTeatinos - Ocio");                 
     });
 
     $("#restaurantes").click(function(event) {
-        cargarSeccion("contents/restaurantes.json","#lirestaurantes");
-        selectandtitle("#lirestaurantes", "Malagatur4all - Restaurantes");                 
+        selectandtitle("restaurants.jsp", "ChequeTeatinos - Restaurantes");                 
     });
     
-    $("#tussitios").click(function(event) {
-        cargarTusSitios();
-        selectandtitle("#lisitios", "Malagatur4all - Tus Sitios");                 
-    });
-    
-    $("#nosotros").click(function(event) {
-        $("section").load('sections/nosotros.html');
-        selectandtitle("#linosotros", "Malagatur4all - Nosotros");                 
-    });
+
     
 });

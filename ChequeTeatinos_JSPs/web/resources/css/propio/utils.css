@@ -110,9 +110,11 @@ root {
     width: 140px;
 }
 
-.redessociales{
+.loginaccount{
     padding-top: 25px;
     float: right;
+    vertical-align: central;
+    padding-right: 40px;
 }
 
 .bordenegro{

@@ -20,9 +20,9 @@
     <nav>
         <ul id="menu">
             <li id="liinicio"><a href="home.jsp" id="inicio"><img id='home' src='http://www.u-phonik.com/images/res-img/home.png' alt='Inicio'/></a><br></li>
-            <!--<li id="lialojamiento"><a href="#" id="alojamiento">Alojamiento</a></li>
-            <li id="liocio"><a href="#" id="ocio">Ocio</a></li>
-            <li id="lirestaurantes"><a href="#" id="restaurantes">Restaurantes</a></li>-->
+            <li id="lialojamiento"><a href="hotels.jsp" id="alojamiento">Alojamiento</a></li>
+            <li id="liocio"><a href="entertainment.jsp" id="ocio">Ocio</a></li>
+            <li id="lirestaurantes"><a href="restaurants.jsp" id="restaurantes">Restaurantes</a></li>
         </ul>
         <div class="loginaccount">
             <a href="login.jsp"><p>Login</p></a>
