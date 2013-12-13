@@ -4,7 +4,6 @@
     Author     : escabia
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
@@ -14,11 +13,9 @@
     </jsp:attribute>
 
     <jsp:body>
-        <jsp:include page="structpage/aside.jsp" />
+        <aside></aside>  
         <section>
-            <c:forEach var="oferta" items="${ofertas.ofertas}">
-                ${oferta.nombreOferta}
-            </c:forEach>
-        </section>
+
+        </section>            
     </jsp:body>
 </t:genericpage>
