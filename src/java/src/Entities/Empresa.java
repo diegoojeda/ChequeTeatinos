@@ -111,7 +111,7 @@ public class Empresa implements Serializable {
 
     @Override
     public String toString() {
-        return "ChequeTeatinos.src.Entities.Empresa[ id=" + id + " ]";
+        return "src.Beans.Empresa[ id=" + id + " ]";
     }
     
 }

@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package src.Fachadas;
+package src.Facades;
 
-import src.Entities.Oferta;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import src.Entities.Oferta;
 
 /**
  *

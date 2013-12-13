@@ -186,7 +186,7 @@ public class Oferta implements Serializable {
 
     @Override
     public String toString() {
-        return "ChequeTeatinos.src.Entities.Oferta[ id=" + id + " ]";
+        return "src.Beans.Oferta[ id=" + id + " ]";
     }
     
 }

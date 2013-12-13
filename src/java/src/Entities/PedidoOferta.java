@@ -96,7 +96,7 @@ public class PedidoOferta implements Serializable {
 
     @Override
     public String toString() {
-        return "ChequeTeatinos.src.Entities.PedidoOferta[ id=" + id + " ]";
+        return "src.Beans.PedidoOferta[ id=" + id + " ]";
     }
     
 }

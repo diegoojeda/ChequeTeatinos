@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package src.Fachadas;
+package src.Facades;
 
 import java.util.List;
 import javax.persistence.EntityManager;

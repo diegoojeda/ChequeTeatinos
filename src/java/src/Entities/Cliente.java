@@ -27,19 +27,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
-    @NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.id = :id"),
     @NamedQuery(name = "Cliente.findByNombre", query = "SELECT c FROM Cliente c WHERE c.nombre = :nombre"),
     @NamedQuery(name = "Cliente.findByApellidos", query = "SELECT c FROM Cliente c WHERE c.apellidos = :apellidos"),
     @NamedQuery(name = "Cliente.findByEmail", query = "SELECT c FROM Cliente c WHERE c.email = :email"),
     @NamedQuery(name = "Cliente.findByTelefono", query = "SELECT c FROM Cliente c WHERE c.telefono = :telefono"),
-    @NamedQuery(name = "Cliente.findByPassword", query = "SELECT c FROM Cliente c WHERE c.password = :password")})
+    @NamedQuery(name = "Cliente.findByPass", query = "SELECT c FROM Cliente c WHERE c.pass = :pass"),
+    @NamedQuery(name = "Cliente.findByEsAdmin", query = "SELECT c FROM Cliente c WHERE c.esAdmin = :esAdmin")})
 public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID")
-    private Integer id;
     @Size(max = 30)
     @Column(name = "NOMBRE")
     private String nombre;
@@ -47,28 +42,25 @@ public class Cliente implements Serializable {
     @Column(name = "APELLIDOS")
     private String apellidos;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Size(max = 60)
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 60)
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "TELEFONO")
     private Integer telefono;
     @Size(max = 20)
-    @Column(name = "PASSWORD")
-    private String password;
+    @Column(name = "PASS")
+    private String pass;
+    @Column(name = "ES_ADMIN")
+    private Short esAdmin;
 
     public Cliente() {
     }
 
-    public Cliente(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public Cliente(String email) {
+        this.email = email;
     }
 
     public String getNombre() {
@@ -103,18 +95,26 @@ public class Cliente implements Serializable {
         this.telefono = telefono;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPass() {
+        return pass;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public Short getEsAdmin() {
+        return esAdmin;
+    }
+
+    public void setEsAdmin(Short esAdmin) {
+        this.esAdmin = esAdmin;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (email != null ? email.hashCode() : 0);
         return hash;
     }
 
@@ -125,7 +125,7 @@ public class Cliente implements Serializable {
             return false;
         }
         Cliente other = (Cliente) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.email == null && other.email != null) || (this.email != null && !this.email.equals(other.email))) {
             return false;
         }
         return true;
@@ -133,7 +133,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "ChequeTeatinos.src.Entities.Cliente[ id=" + id + " ]";
+        return "src.Beans.Cliente[ email=" + email + " ]";
     }
     
 }

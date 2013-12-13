@@ -1,12 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package src.Servlets;
 
-import src.Beans.homeBean;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -14,13 +7,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import src.Facades.OfertaFacade;
+import javax.servlet.http.HttpSession;
+import src.Beans.loginBean;
+import src.Entities.Cliente;
+import src.Facades.ClienteFacade;
 
-@WebServlet(name = "homeServlet", urlPatterns = {"/homeServlet"})
-public class homeServlet extends HttpServlet {
+
+@WebServlet(name = "loginServlet", urlPatterns = {"/loginServlet"})
+public class loginServlet extends HttpServlet {
+
     @EJB
-    private OfertaFacade ofertaFacade;
-
+    private ClienteFacade clienteFacade;
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -32,9 +29,17 @@ public class homeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        homeBean h = new homeBean();
-        h.setOfertas(ofertaFacade.findAll());
-        request.setAttribute("ofertas", h);
+        String email = request.getParameter("email");
+        String pass = request.getParameter("password");
+        loginBean lb = new loginBean();
+        try {
+            lb.setC(clienteFacade.findClienteEmailPass(email, pass));
+        } catch (Exception ex) {
+            request.getRequestDispatcher("error.jsp"); //Crear pagina error de login
+            System.out.println("ERROR!!");
+        }
+        HttpSession sesion = request.getSession();
+        sesion.setAttribute("cliente", lb);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
@@ -49,6 +54,17 @@ public class homeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String email = request.getParameter("email");
+        String pass = request.getParameter("password");
+        Cliente c = null;
+        try {
+            c = clienteFacade.findClienteEmailPass(email, pass);
+        } catch (Exception ex) {
+            request.getRequestDispatcher("error.jsp"); //Crear pagina error de login
+        }
+        System.out.println("esito");
+        request.setAttribute("cliente", c);
+        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
     /**

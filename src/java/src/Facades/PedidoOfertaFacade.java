@@ -4,19 +4,19 @@
  * and open the template in the editor.
  */
 
-package src.Fachadas;
+package src.Facades;
 
-import src.Entities.Pedido;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import src.Entities.PedidoOferta;
 
 /**
  *
  * @author diegoojedagarcia
  */
 @Stateless
-public class PedidoFacade extends AbstractFacade<Pedido> {
+public class PedidoOfertaFacade extends AbstractFacade<PedidoOferta> {
     @PersistenceContext(unitName = "ChequeTeatinosPU")
     private EntityManager em;
 
@@ -25,8 +25,8 @@ public class PedidoFacade extends AbstractFacade<Pedido> {
         return em;
     }
 
-    public PedidoFacade() {
-        super(Pedido.class);
+    public PedidoOfertaFacade() {
+        super(PedidoOferta.class);
     }
     
 }
