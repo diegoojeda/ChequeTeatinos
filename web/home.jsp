@@ -16,6 +16,7 @@
     <jsp:body>
         <jsp:include page="structpage/aside.jsp" />
         <section>
+            Home
             <c:forEach var="oferta" items="${ofertas.ofertas}">
                 ${oferta.nombreOferta}
             </c:forEach>

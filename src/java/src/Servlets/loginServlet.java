@@ -52,7 +52,7 @@ public class loginServlet extends HttpServlet {
         }
         HttpSession sesion = request.getSession();
         sesion.setAttribute("login", lb);
-        request.getRequestDispatcher("loginExito.jsp").forward(request, response);
+        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
     /**
