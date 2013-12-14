@@ -21,7 +21,8 @@
             <c:forEach var="oferta" items="${ofertas.ofertas}" >
                 <ul>
                     <li>
-                        <a href="#" class="product" title="Offers">
+                        <a class="product" title="Offers" href="<c:url value="viewoffer.jsp">
+                               <c:param name="idOferta" value="${oferta.id}"/> </c:url>"
 			<img src="" alt="Company Image"/>
 			<span class="order model">${oferta.nombreOferta}</span>
 			<span class="order"><span class="details">Ver</span><span class="price">${oferta.precioConOferta}<span class="euros">€</span></span></span>
