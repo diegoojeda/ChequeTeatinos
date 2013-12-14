@@ -16,7 +16,11 @@
     <jsp:body>
         <jsp:include page="structpage/aside.jsp" />
         <section>
-            Ver Oferta
+            ${oferta.nombreOferta}
+            ${oferta.fechaValidez} ${oferta.existencias}
+            ${oferta.precioOriginal} ${oferta.precioConOferta}
+            ${oferta.descripcion}
+            
 
         </section>
     </jsp:body>
