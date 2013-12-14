@@ -16,10 +16,21 @@
     <jsp:body>
         <jsp:include page="structpage/aside.jsp" />
         <section>
-            Home
-            <c:forEach var="oferta" items="${ofertas.ofertas}">
-                ${oferta.nombreOferta}
+            <h2>¡Últimas ofertas!</h2>
+            <div class="row">
+            <c:forEach var="oferta" items="${ofertas.ofertas}" >
+                <ul>
+                    <li>
+                        <a href="#" class="product" title="Offers">
+			<img src="" alt="Company Image"/>
+			<span class="order model">${oferta.nombreOferta}</span>
+			<span class="order"><span class="details">Ver</span><span class="price">${oferta.precioConOferta}<span class="euros">€</span></span></span>
+			</a>
+                    </li>
+                </ul>
+                
             </c:forEach>
+            </div>
         </section>
     </jsp:body>
 </t:genericpage>

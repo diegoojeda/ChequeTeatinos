@@ -30,12 +30,12 @@ CREATE TABLE oferta (
 );
 
 CREATE TABLE cliente (
-  id NUMBER(5) PRIMARY KEY,
   nombre VARCHAR2(30),
   apellidos VARCHAR2(60),
-  email VARCHAR2(60),
+  email VARCHAR2(60) PRIMARY KEY,
   telefono NUMBER(9),
-  password VARCHAR2(20)
+  password VARCHAR2(20),
+  es_admin NUMBER(1) CHECK es_admin=0 or es_admin=1
 );
 
 CREATE TABLE pedido (
