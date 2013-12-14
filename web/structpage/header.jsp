@@ -21,18 +21,20 @@
     <nav>
         <ul id="menu">
             <li id="liinicio"><a href="home.jsp" id="inicio"><img id='home' src='http://www.u-phonik.com/images/res-img/home.png' alt='Inicio'/></a><br></li>
-            <li id="lialojamiento"><a href="hotels.jsp" id="alojamiento">Alojamiento</a></li>
+            <li id="lialojamiento"><a href="hotels.jsp" id="alojamiento" onclick="alert('Alojamiento')">Alojamiento</a></li>
             <li id="liocio"><a href="entertainment.jsp" id="ocio">Ocio</a></li>
             <li id="lirestaurantes"><a href="restaurants.jsp" id="restaurantes">Restaurantes</a></li>
         </ul>
         <div class="loginaccount">
-            <c:if test="${empty login.cli.email}">
-                <a href="login.jsp"><p>Login</p></a>
+            <c:if test="${empty login.cli.email}"><!-- Si no estás logeado -->
+                <a href="signup.jsp"><input class="submit" type="button" value="Nuevo" /></a>
+                <a href="login.jsp"><input class="submit" type="button" value="Login" /></a>
             </c:if>
             <c:if test="${not empty login.cli.email}">
-                ${login.cli.nombre}
-            
+                Se ha conectado como: ${login.cli.nombre}
             </c:if>
         </div>
     </nav>
 </header>
+
+<!-- http://www.omeyasweb.com/ora-12519-tnsno-appropriate-service-handler-found/ -->

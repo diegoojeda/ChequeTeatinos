@@ -16,14 +16,14 @@
     <jsp:body>
         <jsp:include page="structpage/aside.jsp" />
         <section>
-            <form name="formcontacto" action="home.jsp" method="post">
+            <form name="formcontacto" action="anadeUsuarioServlet" method="post">
               <div class="form_settings">
                 <!-- Campos formulario -->
                 <p><span>Email</span><input class="contact" type="email" name="email" required/></p>
-                <p><span>Contraseña</span><input class="contact" type="password" name="clave" required/></p>
+                <p><span>Contraseña</span><input class="contact" type="password" name="password" required/></p>
                 <p><span>Apellidos</span><input class="contact" type="text" name="apellidos" required/></p>
                 <p><span>Nombre</span><input class="contact" type="text" name="nombre" required/></p>
-                <p><span>Telefono</span><input class="contact" type="tel" name="nombre" required/></p>
+                <p><span>Telefono</span><input class="contact" type="tel" name="telefono" required/></p>
                 
                 <input class="submit" type="submit" value="Registrarse" />
               </div>

@@ -54,9 +54,11 @@ public class anadeUsuarioServlet extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("email");
         if (clienteFacade.find(email) != null){
-            request.getRequestDispatcher("errorSignup.jsp").forward(request, response);
+            System.out.println("Ya esta registrado");
+//            request.getRequestDispatcher("errorSignup.jsp").forward(request, response);
         }
         else{
+            System.out.println("NUEVOOO");
             Cliente nuevoCliente = new Cliente();
             nuevoCliente.setEmail(email);
             nuevoCliente.setPass(request.getParameter("password"));
