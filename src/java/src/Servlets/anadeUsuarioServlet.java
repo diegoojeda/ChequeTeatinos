@@ -65,7 +65,7 @@ public class anadeUsuarioServlet extends HttpServlet {
             nuevoCliente.setNombre(request.getParameter("nombre"));
             nuevoCliente.setTelefono(Integer.parseInt(request.getParameter("telefono")));
             clienteFacade.create(nuevoCliente);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+            request.getRequestDispatcher("loginServlet").forward(request, response);
         }
     }
 
