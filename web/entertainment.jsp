@@ -14,6 +14,11 @@
     </jsp:attribute>
 
     <jsp:body>
+        <script>
+            $(document).ready(function() {
+                selectandtitle("#liocio", "ChequeTeatinos - Ocio"); 
+            });
+        </script>        
         <jsp:include page="structpage/aside.jsp" />
         <section>
            <h2>Ocio</h2>

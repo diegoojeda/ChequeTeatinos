@@ -28,7 +28,6 @@
 			</a>
                     </li>
                 </ul>
-                
             </c:forEach>
             </div>
         </section>

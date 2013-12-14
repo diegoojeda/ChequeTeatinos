@@ -9,10 +9,10 @@
 <header>
     <div id="logo">
         <div id="logo_text" class="logo_text bordenegro">
-             <h1 class="mismalinea"><a href="#" id="logomalaga">Cheque<span class="logo_colour">Teatinos</span></a></h1>
-             <img id="next" class="mismalinea nextprev" src="resources/media/images/next.png" alt="Siguiente" onclick="$.backstretch('next')"/>
+             <h1 class="mismalinea"><a href="home.jsp" id="logomalaga">Cheque<span class="logo_colour">Teatinos</span></a></h1>
+             <!--<img id="next" class="mismalinea nextprev" src="resources/media/images/next.png" alt="Siguiente" onclick="$.backstretch('next')"/>
              <img id="playpause" class="mismalinea playpause" src="resources/media/images/pause.png" alt="Play Pause" onclick="play()"/>
-             <img id="prev" class="mismalinea nextprev" src="resources/media/images/prev.png" alt="Anterior" onclick="$.backstretch('prev')"/>
+             <img id="prev" class="mismalinea nextprev" src="resources/media/images/prev.png" alt="Anterior" onclick="$.backstretch('prev')"/>-->
 
             <h2>Ofertas de establecimientos de Teatinos (Málaga).</h2>
 
@@ -21,7 +21,7 @@
     <nav>
         <ul id="menu">
             <li id="liinicio"><a href="home.jsp" id="inicio"><img id='home' src='http://www.u-phonik.com/images/res-img/home.png' alt='Inicio'/></a><br></li>
-            <li id="lialojamiento"><a href="hotels.jsp" id="alojamiento" onclick="alert('Alojamiento')">Alojamiento</a></li>
+            <li id="lialojamiento"><a href="hotels.jsp" id="alojamiento" onclick="alojamiento()">Alojamiento</a></li>
             <li id="liocio"><a href="entertainment.jsp" id="ocio">Ocio</a></li>
             <li id="lirestaurantes"><a href="restaurants.jsp" id="restaurantes">Restaurantes</a></li>
         </ul>
@@ -31,7 +31,12 @@
                 <a href="login.jsp"><input class="submit" type="button" value="Login" /></a>
             </c:if>
             <c:if test="${not empty login.cli.email}">
-                Se ha conectado como: ${login.cli.nombre}
+                <div class="mismalinea">
+                    <form action="disconnectServlet" method="post">
+                        Se ha conectado como: <a href="account.jsp">${login.cli.nombre}&nbsp;&nbsp;</a>
+                        <input type="submit" value="Desconectar" />
+                    </form> 
+                </div>
             </c:if>
         </div>
     </nav>

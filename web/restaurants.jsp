@@ -14,6 +14,11 @@
     </jsp:attribute>
 
     <jsp:body>
+        <script>
+            $(document).ready(function() {
+                selectandtitle("#lirestaurantes", "ChequeTeatinos - Restaurantes"); 
+            });
+        </script>  
         <jsp:include page="structpage/aside.jsp" />
         <section>
             <h2>Restaurantes</h2>

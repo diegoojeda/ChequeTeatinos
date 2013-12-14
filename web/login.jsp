@@ -24,7 +24,6 @@
                     <p><span>Email</span><input class="contact" type="email" name="email" required/></p>
                     <p><span>Contraseña</span><input class="contact" type="password" name="password" required/></p>
                     <div class="mismalinea">
-                        <a href="signup.jsp"><input class="submit" type="button" value="Nuevo" /></a>
                         <input class="submit" type="submit" value="Entrar" />
                     </div>
                   </div>
